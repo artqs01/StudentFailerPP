@@ -33,5 +33,5 @@ void questions::load_topic_from_file(size_t topic_id)
 		}
 	}
 	else
-		throw std::runtime_error{"gowno"};
+		throw std::runtime_error{"Could not open the file"};
 }
