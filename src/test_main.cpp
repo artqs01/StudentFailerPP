@@ -5,16 +5,13 @@
 #include <fstream>
 #include <filesystem>
 
+#include "questions.hpp"
+
 namespace fs = std::filesystem;
 
-int main()
+int main(int argc, char** argv)
 {
-	std::fstream f;
-	f.open("../test_data/basic1.txt",std::fstream::in);
-	std::string s;
-	if (f.is_open())
-	{		
-		getline(f, s);
-	}
-	std::cout << s;
+	fs::current_path((fs::current_path()/
+		fs::path(argv[0])).parent_path());
+	std::cout << questions::get_questions().get();
 }
