@@ -14,15 +14,14 @@ class questions
 
     static questions& get_questions();
 
-    std::string draw_questions();
-    std::string draw_additional_question(size_t topic_id);
-      void reset_questions_cnt();
+    std::string draw_question(size_t topic_id);
+    void reset_questions_base();
 
-    std::string get() { return m_question_table[1][2]; };
+    std::vector<std::string>* get() { return m_question_table; };
 
   private:
 
-		size_t questions_cnts[NUMBER_OF_TOPICS];
+		size_t m_questions_cnts[NUMBER_OF_TOPICS] = {};
     std::string m_topic_names[NUMBER_OF_TOPICS];
     const char* m_topic_file_names[NUMBER_OF_TOPICS] =
     {

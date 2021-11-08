@@ -1,0 +1,13 @@
+Podstawy programowania obiektowego
+1. Czym jest pole klasy, a czym metoda i jaka jest różnica miedzy klasą a strukturą.
+2. Na czym polega zasada enkapsulacji i jak ją realizujemy pisząc klasy?
+3. Czym jest konstruktor, destruktor i jakie znasz typy konstruktorów?
+4. Czym są składniki statyczne klasy i czym się różnią od składników zwykłych?
+5. Czym różni się zwykła zależność od asocjacji?
+6. Czym różni się asocjacja od agregacji?
+7. Czym różni się agregacja od kompozycji?
+8. Czym różni się kompozycja od dziedziczenia?
+9. Jakie są sekcje dostępu do składników klasy i jaki wpływają na dziedziczenie?
+10. Czym jest klasa abstrakcyjna i jakie ma zastosowanie w programowaniu?
+11. Jakie zaznasz sposoby rzutowania danych w C++ i do czego służą?
+12. Czym są metody wirtualne i jakie mają zastosowanie w programowaniu obiektowym?
