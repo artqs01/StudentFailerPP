@@ -27,5 +27,9 @@ int main(int argc, char** argv)
 	std::cout << "\n";
 
 	for (size_t i = 0; i < NUMBER_OF_TOPICS; ++i)
-		std::cout << questions::get_questions().get_topic_name(i) << "\n";	
+		std::cout << questions::get_questions().get_topic_name(i) << "\n";
+	catch (...)
+	{
+		std::cout << "gowno";
+	}
 }

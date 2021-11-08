@@ -61,7 +61,6 @@ void questions::load_questions(size_t topic_id)
 				m_question_table[topic_id].push_back(line);
 			}
 		}
-
 		m_questions_cnts[topic_id] = m_question_table[topic_id].size();
 	}
 	else
