@@ -2,7 +2,7 @@
 #define STUDENT_LIST_HPP
 
 #include <vector>
-#include <fstream>
+#include <string>
 
 class student
 {
@@ -27,7 +27,7 @@ class student
 
 };
 
-class student_list 
+class student_list
 {
     public:
 
@@ -40,7 +40,6 @@ class student_list
 
     private:
 
-		std::fstream m_student_list_file;
 		std::vector<student> m_student_list;
 		std::vector<student> m_tested_student_list;
 

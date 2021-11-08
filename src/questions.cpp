@@ -1,12 +1,13 @@
 #include "questions.hpp"
 
+#include <fstream>
 #include <random>
 #include <iostream>
 
 questions::questions()
 {
 	for(size_t topic_id = 0; topic_id < NUMBER_OF_TOPICS; ++topic_id)
-		load_topic_from_file(topic_id);
+		load_questions(topic_id);
 }
 
 questions& questions::get_questions()
@@ -41,7 +42,7 @@ void questions::reset_questions_base()
 		m_questions_cnts[i] = m_question_table[i].size();
 }
 
-void questions::load_topic_from_file(size_t topic_id)
+void questions::load_questions(size_t topic_id)
 {
 	std::ifstream topic_file;
 	topic_file.open(std::string{"../exam_data/"} + m_topic_file_names[topic_id]);
