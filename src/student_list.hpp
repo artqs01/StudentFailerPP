@@ -21,7 +21,7 @@ class student
         size_t m_id;
         std::string m_first_name;
         std::string m_second_name;
-        double m_average_rating = 3.0;
+        double m_average_rating;
         double m_exam_rating = 0;
         size_t m_additional_questions_cnt = 0;
 
