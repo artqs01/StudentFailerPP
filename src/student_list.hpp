@@ -1,8 +1,8 @@
 #ifndef STUDENT_LIST_HPP
 #define STUDENT_LIST_HPP
 
-#include <vector>
 #include <string>
+#include <vector>
 
 class student
 {
@@ -14,6 +14,8 @@ class student
 		size_t get_additional_questions_cnt() { return m_additional_questions_cnt; };
         double get_average_rating() { return m_average_rating; };
         double get_test_rating() { return m_exam_rating; };
+
+        void load_student_data(std::string data);
         void add_points(double points) { m_exam_rating += points; };
 
     private:
@@ -23,27 +25,21 @@ class student
         std::string m_second_name;
         double m_average_rating;
         double m_exam_rating = 0;
-        size_t m_additional_questions_cnt = 0;
+        size_t m_additional_questions_cnt;
 
 };
 
 class student_list
 {
     public:
-
-		static student_list& load_student_list();
-
+        student_list();
 		void save_test_ratings();
-
-		student_list(const student_list&) = delete;
-		student_list operator=(const student_list&) = delete;
 
     private:
 
 		std::vector<student> m_student_list;
-		std::vector<student> m_tested_student_list;
+		std::vector<student> m_examed_student_list;
 
-		student_list() = default;
 };
 
 #endif

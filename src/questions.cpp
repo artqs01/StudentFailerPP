@@ -10,13 +10,6 @@ questions::questions()
 		load_questions(topic_id);
 }
 
-questions& questions::get_questions()
-{
-	if (!m_instance)
-		m_instance = std::unique_ptr<questions>(new questions);
-	return *m_instance;
-}
-
 std::string questions::draw_question(size_t topic_id)
 {
 	std::random_device rand_num_gen;

@@ -11,8 +11,7 @@ class questions
 {
   public:
 
-    static questions& get_questions();
-
+    questions();
     std::string draw_question(size_t topic_id);
     void reset_questions_base();
 
@@ -27,11 +26,9 @@ class questions
       "basic0.txt","basic1.txt","basic2.txt","advanced.txt"
     };
     std::vector<std::string> m_question_table[NUMBER_OF_TOPICS];
-    inline static std::unique_ptr<questions> m_instance;
 
     void load_questions(size_t topic_id);
 
-    questions();
 };
 
 #endif
