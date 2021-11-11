@@ -14,13 +14,13 @@ questions::questions()
 
 std::string topic::draw_question()
 {
-	std::random_device rand_num_gen;
+	std::mt19937_64 rng;
 	std::uniform_int_distribution<size_t> question_generator(0, m_questions_cnt - 1);
 	std::string question = "";
 
 	if (m_questions_cnt)
 	{
-		std::swap(m_question_table[question_generator(rand_num_gen)],
+		std::swap(m_question_table[question_generator(rng)],
 			m_question_table[m_questions_cnt - 1]);
 		question = m_question_table[m_questions_cnt-- - 1];
 	}
