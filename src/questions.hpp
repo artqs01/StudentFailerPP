@@ -5,30 +5,40 @@
 #include <string>
 #include <memory>
 
-#define NUMBER_OF_TOPICS 4
+#define GETTER(name, value) const auto &name() const {return value;}
+
+class topic
+{
+  public :
+  friend class questions;
+
+  std::string draw_question();
+  GETTER(get_topic_name, m_topic_name);
+  GETTER(get_level, m_level);
+
+  topic() = default;
+
+  private:
+
+  std::string m_topic_name;
+  int m_level;
+  std::vector<std::string> m_question_table;
+  size_t m_questions_cnt;
+};
 
 class questions
 {
   public:
 
-    questions();
-    std::string draw_question(size_t topic_id);
     void reset_questions_base();
+    GETTER(get_topic_list, m_topic_list);
 
-    std::string get_topic_name(size_t topic_id) { return m_topic_names[topic_id]; };
+    questions();
 
   private:
 
-		size_t m_questions_cnts[NUMBER_OF_TOPICS] = {};
-    std::string m_topic_names[NUMBER_OF_TOPICS];
-    const char* m_topic_file_names[NUMBER_OF_TOPICS] =
-    {
-      "basic0.txt","basic1.txt","basic2.txt","advanced.txt"
-    };
-    std::vector<std::string> m_question_table[NUMBER_OF_TOPICS];
-
-    void load_questions(size_t topic_id);
-
+		std::vector<topic> m_topic_list;
+    void load_questions();
 };
 
 #endif

@@ -1,0 +1,13 @@
+Programowanie proceduralne, obsługa pamięci dynamicznej i złożone typy danych
+1. Wyjaśnij różnicę, miedzy obiektami umieszczanymi w pamięci stosu i w pamięci sterty.
+2. W jaki sposób w C++ alokujemy i zwalniamy pamięć dynamiczną.
+3. Na czym polega „uziemianie wskaźnika” i jaką pełni rolę w programowaniu?
+4. Kiedy następuje wyciek pamięci i czym się on objawia?
+5. Jakie znasz sposoby na przekazywanie tablic do funkcji?
+6. Jakie są reguły przeciążania nazw funkcji?
+7. Czym są domyślne wartości argumentów funkcji i jakie są reguły ich używania?
+8. Jakie znasz podstawowe operacje bitowe i jak one działają?
+9. Czym są maski bitowe i jakie jest ich zastosowanie w programowaniu?
+10. Czym są aliasy typów i jakie znasz sposoby ich tworzenia?
+11. Czym jest typ wyliczeniowy i jak się z niego korzysta?
+12. Czym jest struktura i czym różni się od tablicy?

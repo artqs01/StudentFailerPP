@@ -3,25 +3,26 @@
 #include <fstream>
 #include <random>
 #include <iostream>
+#include "json.hpp"
+
+using json = nlohmann::json;
 
 questions::questions()
 {
-	for(size_t topic_id = 0; topic_id < NUMBER_OF_TOPICS; ++topic_id)
-		load_questions(topic_id);
+	load_questions();
 }
 
-std::string questions::draw_question(size_t topic_id)
+std::string topic::draw_question()
 {
 	std::random_device rand_num_gen;
-	std::uniform_int_distribution<size_t> question_generator(0, m_questions_cnts[topic_id] - 1);
+	std::uniform_int_distribution<size_t> question_generator(0, m_questions_cnt - 1);
 	std::string question = "";
 
-	if (m_questions_cnts[topic_id])
+	if (m_questions_cnt)
 	{
-		std::swap(m_question_table[topic_id][question_generator(rand_num_gen)],
-			m_question_table[topic_id][m_questions_cnts[topic_id] - 1]);
-
-		question = m_question_table[topic_id][m_questions_cnts[topic_id]-- - 1];
+		std::swap(m_question_table[question_generator(rand_num_gen)],
+			m_question_table[m_questions_cnt - 1]);
+		question = m_question_table[m_questions_cnt-- - 1];
 	}
 	else
 		throw std::runtime_error{"Question base limit reached!"};
@@ -31,34 +32,29 @@ std::string questions::draw_question(size_t topic_id)
 
 void questions::reset_questions_base()
 {
-	for (int i = 0; i < NUMBER_OF_TOPICS; ++i)
-		m_questions_cnts[i] = m_question_table[i].size();
+	for (auto topic : m_topic_list)
+		topic.m_questions_cnt = topic.m_question_table.size();
 }
 
-void questions::load_questions(size_t topic_id)
+void questions::load_questions()
 {
-	std::ifstream topic_file;
-	topic_file.open(std::string{"../exam_data/"} + m_topic_file_names[topic_id]);
+	std::ifstream questions_file("../exam_data/questions.json");
 
-	if (topic_file.is_open())
+	if (questions_file.is_open())
 	{
-		std::string line;
-		getline(topic_file, line);
-		m_topic_names[topic_id] = line;
-		
-		while (!topic_file.eof())
-		{
-			getline(topic_file, line);
-			if (line != "")
-			{
-				m_question_table[topic_id].push_back(line);
-			}
-		}
+		json data;
+		questions_file >> data;
 
-		m_questions_cnts[topic_id] = m_question_table[topic_id].size();
+		size_t i = 0;
+		for (const auto& topic_set : data)
+		{
+			m_topic_list[i].m_topic_name = topic_set["name"];
+			m_topic_list[i].m_level = topic_set["level"];
+			const auto &question_set = topic_set["questions"];
+			std::copy(question_set.begin(), question_set.end(), std::back_inserter(m_topic_list[i]));
+			m_topic_list[i].m_questions_cnt = m_topic_list.size();
+		}
 	}
 	else
-	{
 		throw std::runtime_error("Could not open the file!");
-	}
 }

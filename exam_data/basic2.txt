@@ -1,0 +1,13 @@
+Zarządzanie pamięcią w klasach, programowanie generyczne
+1. Jakie znasz mechanizmy kopiowania i kiedy należy je definiować ręcznie?
+2. Co jest kluczowym krokiem przy definiowaniu przenoszenia i do czego służy std::move()?
+3. Czym różni się kopia płytka od kopii głębokiej?
+4. Jakie znasz typy referencji w C++ i do czego możemy je przypisać?
+5. Co to jest szablon i do czego służy?
+6. Co to jest specjalizacja szablonu i jak ją zdefiniować dla funkcji/klasy?
+7. Co może być parametrem szablonu?
+8. Kiedy wolno nam przeprowadzić kopię binarną, instancji/tablicy, a kiedy musimy użyć kopii element-po- elemencie, lub pole-po-polu.
+9. Jakie znasz typy kolekcji dostępne w bibliotekach standardowych C++?
+10. Czym są inteligentne wskaźniki i jakie znasz ich rodzaje?
+11. Czym są iteratory i do czego ich używamy?
+12. Czym jest funktor i jakie ma zastosowanie w pracy z algorytmami standardowymi STL?
