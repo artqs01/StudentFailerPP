@@ -87,7 +87,7 @@
             "17. Omówdziałanie wzorca Copy-On-Write. Jakie typy kopii są w nim używane i w jaki sposób można wykorzystać inteligentne wskaźniki w uproszczeniu implementacji tego wzorca.",
             "18. Wyjaśnij na czym polega refaktoryzacja kodu i jaki jest jej związek z optymalizacją. Omów jaką rolę w przeprowadzaniu refaktoryzacji pełnią testy jednostkowe i podaj przykład jednego wybranego przekształcenia refaktoryzacyjnego",
             "19. Omów działanie systemu sygnałów i slotów w Qt i podaj jakie są sposoby i reguły ich łączenia. Wyjaśnij, jaka jest podstawowa korzyść ze stosowania tego oryginalnego systemu w programowaniu aplikacji graficznych pisanych obiektowo.",
-            "20. Omów tryby komunikacji z plikami w C++ i wyjaśnij w jaki sposób, możemy pozycjonować \„głowicę komunikacyjną\” w pliku. Porównaj przechowywanie danych w pliku na dysku z przechowywaniem ich w pamięci operacyjnej komputera i przedstaw korzyści i problemy związane z oboma sposobami.",
+            "20. Omów tryby komunikacji z plikami w C++ i wyjaśnij w jaki sposób, możemy pozycjonować \"głowicę komunikacyjną\" w pliku. Porównaj przechowywanie danych w pliku na dysku z przechowywaniem ich w pamięci operacyjnej komputera i przedstaw korzyści i problemy związane z oboma sposobami.",
             "21. Omów trójwarstwowy model aplikacji i wyjaśnij jakie korzyści płynną ze stosowania modeli warstwowych w programowaniu obiektowym.",
             "22. Omów podstawowe pojęcia programowania wielowątkowego takie jak: łączenie, rozłącznie, mutex i zakleszczenie. Przeprowadź dyskusję, w jakich sytuacjach użycie programowania wielowątkowego może przyczynić się do wzrostu wydajności obliczeniowej."
         ]

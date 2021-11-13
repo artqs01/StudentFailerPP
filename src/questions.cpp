@@ -10,11 +10,12 @@ using json = nlohmann::json;
 questions::questions()
 {
 	load_questions();
+	reset_questions_base();
 }
 
 std::string topic::draw_question()
 {
-	std::mt19937_64 rng;
+	std::mt19937 rng(std::random_device{}());
 	std::uniform_int_distribution<size_t> question_generator(0, m_questions_cnt - 1);
 	std::string question = "";
 
@@ -25,15 +26,20 @@ std::string topic::draw_question()
 		question = m_question_table[m_questions_cnt-- - 1];
 	}
 	else
+	{
 		throw std::runtime_error{"Question base limit reached!"};
+	}
 
 	return question;
 }
 
 void questions::reset_questions_base()
 {
-	for (auto topic : m_topic_list)
+	for (auto& topic : m_topic_list)
+	{
 		topic.m_questions_cnt = topic.m_question_table.size();
+	}
+		
 }
 
 void questions::load_questions()
@@ -46,13 +52,16 @@ void questions::load_questions()
 		questions_file >> data;
 
 		size_t i = 0;
+		m_topic_list.resize(data.size());
 		for (const auto& topic_set : data)
 		{
-			m_topic_list[i].m_topic_name = topic_set["name"];
+			m_topic_list[i].m_topic_name = topic_set["topic"];
 			m_topic_list[i].m_level = topic_set["level"];
-			const auto &question_set = topic_set["questions"];
-			std::copy(question_set.begin(), question_set.end(), std::back_inserter(m_topic_list[i]));
-			m_topic_list[i].m_questions_cnt = m_topic_list.size();
+			auto question_set = topic_set["questions"];
+			std::copy(question_set.begin(), question_set.end(),
+				std::back_inserter(m_topic_list[i].m_question_table));
+			m_topic_list[i].m_questions_cnt = m_topic_list[i].m_question_table.size();
+			++i;
 		}
 	}
 	else
