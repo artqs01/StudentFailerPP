@@ -65,5 +65,5 @@ void questions::load_questions()
 		}
 	}
 	else
-		throw std::runtime_error("Could not open the file!");
+		throw std::runtime_error("Could not open \"questions.json\"!");
 }

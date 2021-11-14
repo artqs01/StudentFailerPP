@@ -16,7 +16,7 @@ class topic
 		topic() = default;
 		friend class questions;
 	private:
-	std::string m_topic_name;
+		std::string m_topic_name;
 		int m_level;
 		std::vector<std::string> m_question_table;
 		size_t m_questions_cnt;

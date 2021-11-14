@@ -3,56 +3,42 @@
         "name" : "Artur",
         "surname" : "Kuś",
         "id" : 0,
-        "average_rating" : 4.2,
-        "exam_rating" : 0,
-        "additional_questions" : 0
+        "average_rating" : 4.2
     },
     {
         "name" : "Belzebub",
         "surname" : "Słowacki",
         "id" : 1,
-        "average_rating" : 6.66,
-        "exam_rating" : 0,
-        "additional_questions" : 0
+        "average_rating" : 6.66
     },
     {
         "name" : "Dobromir",
         "surname" : "Piwny",
         "id" : 2,
-        "average_rating" : 3.1,
-        "exam_rating" : 0,
-        "additional_questions" : 0
+        "average_rating" : 3.1
     },
     {
         "name" : "Gniewko",
         "surname" : "Korzeniowski",
         "id" : 3,
-        "average_rating" : 4.5,
-        "exam_rating" : 0,
-        "additional_questions" : 0
+        "average_rating" : 4.5
     },
     {
         "name" : "Urszula",
         "surname" : "Stańczuk",
         "id" : 230,
-        "average_rating" : 2.7,
-        "exam_rating" : 0,
-        "additional_questions" : 0
+        "average_rating" : 2.7
     },
     {
         "name" : "Zenobiusz",
         "surname" : "Kochan",
         "id" : 4,
-        "average_rating" : 3.0,
-        "exam_rating" : 0,
-        "additional_questions" : 0
+        "average_rating" : 3.0
     },
     {
         "name" : "Bogna",
         "surname" : "Karasek",
         "id" : 5,
-        "average_rating" : 5.0,
-        "exam_rating" : 0,
-        "additional_questions" : 0
+        "average_rating" : 5.0
     },
 ]
