@@ -17,6 +17,7 @@ class student
 		GET(get_exam_rating, m_exam_rating);
 		GET(get_additional_questions_cnt, m_additional_questions_cnt);
 		student() = default;
+		student& operator=(const student& s2) = default;
 		friend class student_list;
 	private:
 		size_t m_id;
@@ -32,12 +33,14 @@ class student_list
 {
 	public:
 		void end_student_session(size_t student_id);
-		void save_test_ratings();
-		GET_CONTAINER_MEMBER(get_student, m_students, student_id);
+		void save_ratings_as_json();
+		const student& get_student(size_t student_id) const;
+		GET_NUMBER(get_number_of_students, m_students.size());
+		GET_NUMBER(get_number_of_students_after_exam, m_students_after_exam.size());
 		student_list();
 	private:
 		std::vector<student> m_students;
-		std::vector<student> m_sudents_after_exam;
+		std::vector<student> m_students_after_exam;
 		void load_student_list();
 		size_t evaluate_additional_questions_number(double avreage_rating);
 };

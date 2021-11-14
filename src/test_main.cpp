@@ -6,6 +6,7 @@
 #include <filesystem>
 
 #include "questions.hpp"
+#include "student_list.hpp"
 
 namespace fs = std::filesystem;
 
@@ -46,8 +47,26 @@ int main(int argc, char** argv)
 	// 	std::cout << q.draw_question(0) << std::endl;
 	// }
 	// std::cout << std::endl;
+	student_list sl;
+	for (int i = 0; i < 6; i++)
+	{
+		std::cout << sl.get_student(i).get_id() << std::endl;
+		std::cout << sl.get_student(i).get_name() << std::endl;
+		std::cout << sl.get_student(i).get_surname() << std::endl;
+		std::cout << sl.get_student(i).get_average_rating() << std::endl;
+		std::cout << sl.get_student(i).get_exam_rating() << std::endl;
+		std::cout << sl.get_student(i).get_additional_questions_cnt() << std::endl;
+		std::cout << std::endl;
+	}
+	std::cout << sl.get_student(230).get_id() << std::endl;
+	std::cout << sl.get_student(230).get_name() << std::endl;
+	std::cout << sl.get_student(230).get_surname() << std::endl;		
+	std::cout << sl.get_student(230).get_average_rating() << std::endl;
+	std::cout << sl.get_student(230).get_exam_rating() << std::endl;		
+	std::cout << sl.get_student(230).get_additional_questions_cnt() << std::endl;
+	std::cout << std::endl;
 
-	
+	std::cout << sl.get_number_of_students();
 }
 
 // std::cout << "\n";

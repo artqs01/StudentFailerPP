@@ -1,6 +1,6 @@
 #include "student_list.hpp"
 
-#include <json.hpp>
+#include "json.hpp"
 #include <fstream>
 
 using json = nlohmann::json;
@@ -12,7 +12,7 @@ void student_list::end_student_session(size_t student_id)
 	{
 		if (s.m_id == student_id)
 		{
-			m_sudents_after_exam.push_back(s);
+			m_students_after_exam.push_back(s);
 			m_students.erase(m_students.begin() + index);
 			return;
 		}
@@ -21,9 +21,36 @@ void student_list::end_student_session(size_t student_id)
 	throw std::invalid_argument {"Student is not in the student list!"};
 }
 
-void student_list::save_test_ratings()
+void student_list::save_ratings_as_json()
 {
-	
+	json output_data;
+	for (auto s : m_students_after_exam)
+	{
+		json s_data;
+		s_data["id"] = s.m_id;
+		s_data["name"] = s.m_name;
+		s_data["surname"] = s.m_surname;
+		s_data["avreage_rating"] = s.m_avreage_rating;
+		s_data["exam_rating"] = s.m_exam_rating;
+		output_data.push_back(s_data);
+	}
+	std::ofstream done_students_file("../exam_data/students_completed.json");
+	if (done_students_file.is_open())
+	{
+		done_students_file << output_data;
+	}
+	else
+		throw std::runtime_error("Could not open \"students_completed.json\"!");
+}
+
+const student& student_list::get_student(size_t student_id) const
+{
+	for (auto& s : m_students)
+	{
+		if (s.m_id == student_id)
+			return s;
+	}
+	throw std::invalid_argument {"Student is not in the student list!"};
 }
 
 student_list::student_list()
