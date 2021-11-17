@@ -20,7 +20,7 @@ class student
 		student& operator=(const student& s2) = default;
 		friend class student_list;
 	private:
-		size_t m_id;
+		int m_id;
 		std::string m_name;
 		std::string m_surname;
 		double m_avreage_rating;
@@ -32,9 +32,9 @@ class student
 class student_list
 {
 	public:
-		void end_student_session(size_t student_id);
+		void end_student_session(int student_id);
 		void save_ratings_as_json();
-		const student& get_student(size_t student_id) const;
+		const student& get_student(int student_id) const;
 		GET_NUMBER(get_number_of_students, m_students.size());
 		GET_NUMBER(get_number_of_students_after_exam, m_students_after_exam.size());
 		student_list();

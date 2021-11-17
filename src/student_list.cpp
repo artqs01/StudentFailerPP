@@ -5,7 +5,7 @@
 
 using json = nlohmann::json;
 
-void student_list::end_student_session(size_t student_id)
+void student_list::end_student_session(int student_id)
 {
 	size_t index = 0;
 	for (auto& s : m_students)
@@ -43,7 +43,7 @@ void student_list::save_ratings_as_json()
 		throw std::runtime_error("Could not open \"students_completed.json\"!");
 }
 
-const student& student_list::get_student(size_t student_id) const
+const student& student_list::get_student(int student_id) const
 {
 	for (auto& s : m_students)
 	{
