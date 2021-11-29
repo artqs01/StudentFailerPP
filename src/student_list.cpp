@@ -57,7 +57,7 @@ void student_list::save_ratings_as_json()
 		throw std::runtime_error("Could not open \"exam_grades.json\"!");
 }
 
-const student& student_list::get_student(size_t student_id) const
+const student& student_list::get_student(int student_id) const
 {
 	for (auto& s : m_students)
 	{
