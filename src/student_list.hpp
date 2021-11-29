@@ -23,7 +23,6 @@ class student
 			m_additional_questions_cnt(n_additional_questions_cnt)
 		{}
 		student& operator=(const student& s2) = default;
-		friend class student_list;
 	private:
 		int m_id;
 		std::string m_name;
@@ -37,8 +36,8 @@ class student
 class student_list
 {
 	public:
-		void add_points(size_t id, double points);
-		void end_student_session(size_t student_id);
+		void add_points(int id, double points);
+		void end_student_session(int student_id);
 		void save_ratings_as_json();
 		const student& get_student(int student_id) const;
 		GET_NUMBER(get_number_of_students, m_students.size());

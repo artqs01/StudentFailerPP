@@ -11,10 +11,10 @@ class topic
 {
 	public :
 		std::string draw_question();
+		void reset_question_cnt() { m_questions_cnt = m_question_table.size(); };
 		GET(get_topic_name, m_topic_name);
 		GET(get_level, m_level);
-		topic() = default;
-		friend class questions;
+		topic(std::string n_topic_name, int n_level, std::vector<std::string> n_question_table);
 	private:
 		std::string m_topic_name;
 		int m_level;

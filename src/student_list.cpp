@@ -5,12 +5,12 @@
 
 using json = nlohmann::json;
 
-void student_list::add_points(size_t student_id, double points)
+void student_list::add_points(int student_id, double points)
 {
 	size_t index = 0;
 	for (auto& s : m_students)
 	{
-		if (s.m_id == student_id)
+		if (s.get_id() == student_id)
 		{
 			s.add_points(points);
 			return;
@@ -20,12 +20,12 @@ void student_list::add_points(size_t student_id, double points)
 	throw std::invalid_argument {"Student is not in the student list!"};
 }
 
-void student_list::end_student_session(size_t student_id)
+void student_list::end_student_session(int student_id)
 {
 	size_t index = 0;
 	for (auto& s : m_students)
 	{
-		if (s.m_id == student_id)
+		if (s.get_id() == student_id)
 		{
 			m_students_after_exam.push_back(s);
 			m_students.erase(m_students.begin() + index);
@@ -42,10 +42,10 @@ void student_list::save_ratings_as_json()
 	for (auto s : m_students_after_exam)
 	{
 		json s_data;
-		s_data["id"] = s.m_id;
-		s_data["name"] = s.m_name;
-		s_data["surname"] = s.m_surname;
-		s_data["exam_rating"] = s.m_exam_rating;
+		s_data["id"] = s.get_id();
+		s_data["name"] = s.get_name();
+		s_data["surname"] = s.get_surname();
+		s_data["exam_rating"] = s.get_exam_rating();
 		output_data.push_back(s_data);
 	}
 	std::ofstream done_students_file("../exam_data/exam_grades.json");
@@ -61,7 +61,7 @@ const student& student_list::get_student(int student_id) const
 {
 	for (auto& s : m_students)
 	{
-		if (s.m_id == student_id)
+		if (s.get_id() == student_id)
 			return s;
 	}
 	throw std::invalid_argument {"Student is not in the student list!"};
