@@ -16,7 +16,12 @@ class student
 		GET(get_average_rating, m_avreage_rating);
 		GET(get_exam_rating, m_exam_rating);
 		GET(get_additional_questions_cnt, m_additional_questions_cnt);
-		student() = default;
+		student(size_t n_id, std::string n_name, std::string n_surname,
+			double n_avreage_rating, size_t n_additional_questions_cnt) :
+			m_id(n_id), m_name(n_name), m_surname(n_surname),
+			m_avreage_rating(n_avreage_rating),
+			m_additional_questions_cnt(n_additional_questions_cnt)
+		{}
 		student& operator=(const student& s2) = default;
 		friend class student_list;
 	private:
@@ -24,7 +29,7 @@ class student
 		std::string m_name;
 		std::string m_surname;
 		double m_avreage_rating;
-		double m_exam_rating = 0;
+		double m_exam_rating = 0.0;
 		size_t m_additional_questions_cnt;
 };
 
@@ -32,6 +37,7 @@ class student
 class student_list
 {
 	public:
+		void add_points(size_t id, double points);
 		void end_student_session(size_t student_id);
 		void save_ratings_as_json();
 		const student& get_student(size_t student_id) const;

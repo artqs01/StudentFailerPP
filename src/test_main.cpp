@@ -15,38 +15,38 @@ int main(int argc, char** argv)
 	fs::current_path((fs::current_path()/
 		fs::path(argv[0])).parent_path());
 
-	// questions q;
-	// std::cout << q.get_topic(0).get_topic_name() << std::endl;
-	// for (int i = 0; i < 12; i++)
-	// {
-	// 	std::cout << q.draw_question(0) << std::endl;
-	// }
-	// std::cout << std::endl;
-	// std::cout << q.get_topic(1).get_topic_name() << std::endl;
-	// for (int i = 0; i < 12; i++)
-	// {
-	// 	std::cout << q.draw_question(1) << std::endl;
-	// }
-	// std::cout << std::endl;
-	// std::cout << q.get_topic(2).get_topic_name() << std::endl;
-	// for (int i = 0; i < 12; i++)
-	// {
-	// 	std::cout << q.draw_question(2) << std::endl;
-	// }
-	// std::cout << std::endl;
-	// std::cout << q.get_topic(3).get_topic_name() << std::endl;
-	// for (int i = 0; i < 22; i++)
-	// {
-	// 	std::cout << q.draw_question(3) << std::endl;
-	// }
-	// std::cout << std::endl;
-	// q.reset_questions_base();
-	// std::cout << q.get_topic(0).get_topic_name() << std::endl;
-	// for (int i = 0; i < 12; i++)
-	// {
-	// 	std::cout << q.draw_question(0) << std::endl;
-	// }
-	// std::cout << std::endl;
+	questions q;
+	std::cout << q.get_topic(0).get_topic_name() << std::endl;
+	for (int i = 0; i < 12; i++)
+	{
+		std::cout << q.draw_question(0) << std::endl;
+	}
+	std::cout << std::endl;
+	std::cout << q.get_topic(1).get_topic_name() << std::endl;
+	for (int i = 0; i < 12; i++)
+	{
+		std::cout << q.draw_question(1) << std::endl;
+	}
+	std::cout << std::endl;
+	std::cout << q.get_topic(2).get_topic_name() << std::endl;
+	for (int i = 0; i < 12; i++)
+	{
+		std::cout << q.draw_question(2) << std::endl;
+	}
+	std::cout << std::endl;
+	std::cout << q.get_topic(3).get_topic_name() << std::endl;
+	for (int i = 0; i < 22; i++)
+	{
+		std::cout << q.draw_question(3) << std::endl;
+	}
+	std::cout << std::endl;
+	q.reset_questions_base();
+	std::cout << q.get_topic(0).get_topic_name() << std::endl;
+	for (int i = 0; i < 12; i++)
+	{
+		std::cout << q.draw_question(0) << std::endl;
+	}
+	std::cout << std::endl;
 	student_list sl;
 	for (int i = 0; i < 6; i++)
 	{
@@ -67,6 +67,16 @@ int main(int argc, char** argv)
 	std::cout << std::endl;
 
 	std::cout << sl.get_number_of_students();
+
+	sl.add_points(0,1.0);
+	sl.add_points(0,1.0);
+	sl.end_student_session(0);
+	sl.add_points(1,3.0);
+	sl.end_student_session(1);
+	sl.add_points(230, 5.0);
+	sl.end_student_session(230);
+	
+	sl.save_ratings_as_json();
 }
 
 // std::cout << "\n";

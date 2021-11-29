@@ -1,9 +1,24 @@
 #include "student_list.hpp"
-
 #include "json.hpp"
+
 #include <fstream>
 
 using json = nlohmann::json;
+
+void student_list::add_points(size_t student_id, double points)
+{
+	size_t index = 0;
+	for (auto& s : m_students)
+	{
+		if (s.m_id == student_id)
+		{
+			s.add_points(points);
+			return;
+		}
+		++index;
+	}
+	throw std::invalid_argument {"Student is not in the student list!"};
+}
 
 void student_list::end_student_session(size_t student_id)
 {
@@ -30,17 +45,16 @@ void student_list::save_ratings_as_json()
 		s_data["id"] = s.m_id;
 		s_data["name"] = s.m_name;
 		s_data["surname"] = s.m_surname;
-		s_data["avreage_rating"] = s.m_avreage_rating;
 		s_data["exam_rating"] = s.m_exam_rating;
 		output_data.push_back(s_data);
 	}
-	std::ofstream done_students_file("../exam_data/students_completed.json");
+	std::ofstream done_students_file("../exam_data/exam_grades.json");
 	if (done_students_file.is_open())
 	{
-		done_students_file << output_data;
+		done_students_file << output_data.dump(4);
 	}
 	else
-		throw std::runtime_error("Could not open \"students_completed.json\"!");
+		throw std::runtime_error("Could not open \"exam_grades.json\"!");
 }
 
 const student& student_list::get_student(size_t student_id) const
@@ -68,15 +82,14 @@ void student_list::load_student_list()
 		students_file >> data;
 
 		size_t i = 0;
-		m_students.resize(data.size());
+		m_students.clear();
 		for (const auto& student : data)
 		{
-			m_students[i].m_id = student["id"];
-			m_students[i].m_name = student["name"];
-			m_students[i].m_surname = student["surname"];
-			m_students[i].m_avreage_rating = student["average_rating"];
-			m_students[i].m_additional_questions_cnt =
-				evaluate_additional_questions_number(m_students[i].m_avreage_rating);
+			m_students.emplace_back(student["id"],
+				student["name"],
+				student["surname"],
+				student["average_rating"],
+				evaluate_additional_questions_number(student["average_rating"]));
 			++i;
 		}
 	}
