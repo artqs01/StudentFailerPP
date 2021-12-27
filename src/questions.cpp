@@ -1,11 +1,17 @@
 #include "questions.hpp"
+#include "json.hpp"
 
 #include <fstream>
 #include <random>
 #include <iostream>
-#include "json.hpp"
 
 using json = nlohmann::json;
+
+topic::topic(std::string n_topic_name, int n_level, std::vector<std::string> n_question_table) :
+	m_topic_name(n_topic_name), m_level(n_level), m_question_table(n_question_table)
+{
+	reset_question_cnt();
+}
 
 questions::questions()
 {
@@ -37,9 +43,8 @@ void questions::reset_questions_base()
 {
 	for (auto& topic : m_topic_list)
 	{
-		topic.m_questions_cnt = topic.m_question_table.size();
-	}
-		
+		topic.reset_question_cnt();
+	}		
 }
 
 void questions::load_questions()
@@ -52,15 +57,11 @@ void questions::load_questions()
 		questions_file >> data;
 
 		size_t i = 0;
-		m_topic_list.resize(data.size());
-		for (const auto& topic_set : data)
+		m_topic_list.clear();
+		for (const auto& topic : data)
 		{
-			m_topic_list[i].m_topic_name = topic_set["topic"];
-			m_topic_list[i].m_level = topic_set["level"];
-			auto question_set = topic_set["questions"];
-			std::copy(question_set.begin(), question_set.end(),
-				std::back_inserter(m_topic_list[i].m_question_table));
-			m_topic_list[i].m_questions_cnt = m_topic_list[i].m_question_table.size();
+			auto question_set = topic["questions"];
+			m_topic_list.emplace_back(topic["topic"], topic["level"], question_set);
 			++i;
 		}
 	}
